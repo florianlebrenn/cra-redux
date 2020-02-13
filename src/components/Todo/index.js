@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { compose } from "../../helpers";
-import { addTodos } from "../../store/reducers/todos";
+import { addTodo, deleleTodo } from "../../store/reducers/todos";
 
 import Todo from "./design";
 
@@ -19,9 +19,10 @@ const mapStateToProps = ({ todos }) => ({
 
 const mapDispatchToProps = (dispatch, { text, resetText, setText }) => ({
   submitText: () => {
-    dispatch(addTodos(text));
+    dispatch(addTodo(text));
     resetText();
   },
+  deleteItem: id => dispatch(deleleTodo(id)),
   setTxt: e => setText(e.target.value)
 });
 
